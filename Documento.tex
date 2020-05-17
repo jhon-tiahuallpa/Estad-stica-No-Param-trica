@@ -1,0 +1,611 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsthm,amssymb}
+%Para hacer dos columnas en latex
+\usepackage{multicol} 
+\usepackage[spanish]{babel} %Castellanización
+\usepackage[T1]{fontenc} %escribe lo del teclado
+\usepackage[utf8]{inputenc} %Reconoce algunos símbolos
+\usepackage{lmodern} %optimiza algunas fuentes
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{hyperref} % Uso de links
+\usepackage[spanish]{babel} % para escribir en espanol
+%\usepackage[latin1]{inputenc} % para acentos sin codigo
+\usepackage{multirow, array} % para las tablas
+\usepackage{float} % para usar [H]
+\usepackage{vmargin}
+\usepackage{pdflscape} % para poner horizontal alguna hoja
+\usepackage{tcolorbox}
+%Este paquete tiene el salto de pagina
+\usepackage{afterpage}
+
+
+\setpapersize{A4}
+\setmargins{1.5cm}     % margen izquierdo
+{1cm}              % margen superior
+{18cm}               % anchura del texto
+{26.5cm}               % altura del texto
+{1pt}                % altura de los encabezados
+{1cm}                % espacio entre el texto y los encabezados
+{0pt}                % altura del pie de página
+{0.3cm}               % espacio entre el texto y el pie de página
+
+\newcommand{\N}{\mathscr{N}}
+\newcommand{\Z}{\mathscr{Z}}
+ \newcommand{\X}{\mathscr{X}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+\begin{document}
+ 
+%\begin{landscape}  %esto es para poner en horizontal esta pagina
+
+
+\begin{center}
+  \Huge{Material de Apoyo}
+\end{center}
+
+\begin{center}
+\Large{Inferencia Estadística No Parametrica}  \\  
+\small{Yhon Paúl Tiahuallpa Yucra}\\
+\end{center}
+
+
+\section{Estadísticos de Orden}
+
+\begin{tcolorbox}[colback=white,colframe=black,width=12cm ,coltitle=white, title = Función de Densidad $X_{(j)}$  ]
+\begin{center}
+$
+f_{X_{(j)}}(x) = \frac{n!}{(j-1)!(n-j)!} f_{X}(x)\left [ F_X (x) \right ]^{j-1} \left [ 1 -  F_X (x) \right ]^{n-j}
+$
+\end{center}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=white,colframe=black,width=18cm ,coltitle=white, title = Función de Distribución Conjunta $X_{(i)}$ y $X_{(j)}$  ]
+\begin{center}
+$
+\footnotesize{
+f_{X_{(i)},X_{(j)}}(u, \upsilon) = \frac{n!}{(i-1)!(j-1-i)!(n-j)!} f_{X}(u)f_{X}(\upsilon)\left [ F_X (u) \right ]^{i-1} \left [ F_{X}(\upsilon) -  F_X (u) \right ]^{j-1-i} \left [ 1 -  F_X (\upsilon) \right ]^{n-j}
+}  $
+\end{center}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=white,colframe=black,width=12cm ,coltitle=white , title = Densidad conjunta del máximo y el mínimo]
+\begin{center}
+$
+f_{X_{1:n},X_{n:n}}(x, y) = n(n-1)\left [ F(y) - F(x) \right ]^{n-2} f(x)f(y) \quad ,x<y
+$ 
+\end{center}
+\end{tcolorbox}
+
+
+
+
+\begin{tcolorbox}[colback=white,colframe=black,width=17cm ,coltitle=white, title = Densidad conjunta de dos estadísticas de orden consecutivas]
+\begin{center}
+$
+f_{X_{(i)},X_{(i+1)}}(x, y) = \frac{n!}{(i-1)!(n-i-1)!} \left [ F(x) \right ]^{i-1} f(x) \left [ F(y) -  F(x) \right ]^{n-i-1}  f(y) \quad ,x<y
+$ 
+\end{center}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=black,width=17cm ,coltitle=white, title = Distribución conjunta de $n$ estadísticos de orden ]
+\begin{center}
+\[
+f_{1,2, \ldots, n}(x_1, x_2, \ldots, x_n) =
+\begin{cases}
+n! f(x_1)f(x_2) \ldots f(x_n) &, \text{si } -\infty < x_1 \leq x_2 \leq \ldots \leq x_n < \infty;\\
+x &, \text{en otro caso}.
+\end{cases}
+\]
+\end{center}
+\end{tcolorbox}
+
+\section{Tests}
+\subsection*{Rachas}
+
+\begin{center}
+    
+
+\begin{tcolorbox}[colback=white,colframe=black]
+
+\begin{multicols}{2} 
+\large{
+\begin{center}
+%\begin{array}{c}
+%r_{min} = r_{n_1,n_2,\left ( \frac{\alpha}{2} \right )} \\
+%r_{max} = r_{n_1,n_2,\left (1- \frac{\alpha}{2} \right )}
+%\end{array}
+
+
+%r_0 \sim \N(\mu_{r_0},\sigma^2_{r_0}) \\
+\large{
+Media = $\mu_{r_0} = \frac{2 n_1 n_2}{n_1 + n_2} + 1$ \\
+Varianza = $\sigma^2_{r_0}= \frac{2 n_1 n_2 (2 n_1 n_2 - n_1 - n_2)}{(n_1 + n_2)^2 (n_1 + n_2 -1)}$
+}
+\end{center}}
+
+\end{multicols} 
+
+%\begin{align*}
+%   \huge{Z_c = \frac{r_0 - \mu_{r_0}}{\sigma_{r_0}} \sim \N(0,1)}
+%\end{align*}
+
+\end{tcolorbox}
+\end{center}
+
+
+
+
+\subsection*{Signos}
+\begin{multicols}{3} 
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=5cm, title= H_0: M \geq M_o]
+
+\fcolorbox{black}{white}{C > T$^{(-)}$}
+
+  $P_1 = \sum^c_{i = 0}\binom{n}{i}\left ( \frac{1}{2} \right )^n$
+
+\tcblower
+\fcolorbox{black}{white}{C < T$^{(-)}$}
+
+  $P_2 = \sum^n_{i = c}\binom{n}{i}\left ( \frac{1}{2} \right )^n$
+
+\end{tcolorbox}
+\end{center}
+
+
+
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=5cm, title= H_0: M \leq M_o,coltitle=white]
+
+\fcolorbox{black}{white}{C > T$^{(-)}$}
+
+ $ P_2 = \sum^n_{i = c}\binom{n}{i}\left ( \frac{1}{2} \right )^n$
+\tcblower
+
+\fcolorbox{black}{white}{C < T$^{(-)}$}
+
+  $P_1 = \sum^c_{i = 0}\binom{n}{i}\left ( \frac{1}{2} \right )^n$
+
+\end{tcolorbox}
+\end{center}
+
+
+
+
+
+
+\begin{center}
+\begin{tcolorbox}[colback = white,colframe = black, width = 5cm, title = H_0: M \doteq  M_o,coltitle=white]
+
+\fcolorbox{black}{white}{C > T$^{(-)}$}
+
+  $P_2 = \frac{\sum^n_{i = c}\binom{n}{i}\left ( \frac{1}{2} \right )^n}{2}$
+
+\tcblower
+\fcolorbox{black}{white}{C < T$^{(-)}$}
+
+$  P_1 = \frac{\sum^c_{i = 0}\binom{n}{i}\left ( \frac{1}{2} \right )^n}{2}$
+  
+\end{tcolorbox}
+\end{center}
+\end{multicols} 
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=8cm ,coltitle=white]
+$$
+Z_c =\frac{(T-0.5)-0.5n}{0.5 \sqrt{n}}
+$$
+\end{tcolorbox}
+\end{center}
+
+
+
+
+
+\subsection*{Chi Cuadrado}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=11 cm]
+\large{
+$$\X^2_{c} = \sum^k_{i=1}\frac{(O_i -E_i)^2}{E_i} \sim \X^2_{(k-1)g.l.$$
+}
+\end{tcolorbox}
+\end{center}
+
+
+
+
+
+
+
+\subsection*{Wilcoxon}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=15cm ,coltitle=white]
+
+\begin{center}
+
+\Large{
+\begin{multicols}{2} 
+$\mu_w = \frac{n(n+1)}{4}$\\
+$\sigma_w = \sqrt{\frac{n(n+1)(2n+1)}{24}}$\\
+%Z_c = \frac{W-\mu_w}{\sigma_w} \sim  \N(0,1)
+\end{multicols}
+}
+    
+\end{center}
+\end{tcolorbox}
+\end{center}
+
+
+
+
+
+%\end{landscape} 
+
+
+
+
+
+
+
+
+
+%\subsection{Kolmogorov-Smirnov}
+%\begin{center}
+ %   \begin{tcolorbox}[colback=white,colframe=black,width=8cm ,coltitle=white]
+%\Large{
+
+%F_n(x)
+%\left \{  \begin{array}{rcl}
+%&0 \;&  x<x_1\\
+%&\frac{1}{n} \;& x_1\leq x \leq x_2\\
+%&&\vdots \\
+%&\frac{n-1}{1} \;& x_{n-1} \leq x \leq x_{n}\\
+%&1 \;& x_n \leq x\\
+%\end{array}  
+%}
+%\end{tcolorbox}
+%\end{center}
+
+
+
+
+\begin{center}
+
+\resizebox*{16.5cm}{!}{
+\begin{tabular}{|c|c|c|c|c|c}
+\hline
+\multicolumn{5}{|c|}{\large\textbf{Variables Aleatorias Discretas}} \\ \hline
+\textit{\textbf{Distribución}}  & $f(x)$  & $F(x)$  & $E(X)$  & $Var(X)$   \\ \hline 
+
+$Bernoulli\,(p)$    &  \(\displaystyle p^x q^{1-x} \) & \begin{array}{rcl}
+0 &\;si\, x<0\\
+q &\;si\, 0<x<1\\
+1 &\;si\,x>1\
+\
+\end{array}    &  $p$ &    $pq$    \\ \hline
+
+$Binomial(n,p)$&  \(\displaystyle \binom{n}{x}p^xq^{n-x} \) & \(\displaystyle \sum_{i=1}^x \binom{n}{i}p^iq^{n-i} \)          &     $np$  &   $npq$    \\ \hline
+
+$Poisson(\lambda)$ &  \(\displaystyle \frac{\lambda^x e^{-\lambda}}{x!}  \)    &   \(\displaystyle  e^{-\lambda}\sum_{i=0}^x\frac{\lambda^i}{i!} \)    &  $\lambda$      &  $\lambda$   \\ \hline
+
+$Geométrica(p)$&    \(\displaystyle pq^{x-1} \)    &  \(\displaystyle 1-q^x \)  &   \(\displaystyle \frac{1}{p} \)     &  \(\displaystyle \frac{q}{p^2} \)  \\ \hline
+
+$BinNeg(r,p)$ &   \(\displaystyle  \binom{x-1}{r-1}p^r q^x-r \)    &    \(\displaystyle  1- I_p(x+1,r) \)    &    \(\displaystyle  \frac{r}{p} \)    &  \(\displaystyle  \frac{rq}{p^2} \)   \\ \hline
+
+$HiperGeom(N,M,n)$&  \(\displaystyle \frac{\binom{M}{x}\binom{N-M}{n-x}}{\binom{N}{n}}  \)  &    \(\displaystyle \sum_{i=0}^x\frac{\binom{M}{i}\binom{N-M}{n-i}}{\binom{N}{n}}  \)    &     \(\displaystyle  \frac{nM}{N} \)   &  \(\display \frac{nM}{N}\left (1- \frac{M}{N} \right ) \left (\frac{N-M}{N-1} \right ) \)    \\ 
+\hline
+\end{tabular}}
+    
+\end{center}
+
+
+
+
+
+
+
+\begin{center}
+\resizebox*{16.5cm}{!}{
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multicolumn{5}{|c|}{\large\textbf{Variables Aleatorias Continuas}} \\ \hline
+\textit{\textbf{Distribución}} & $f(x)$  & $F(x)$  & $E(X)$  & $Var(X)$  \\ \hline
+
+$Uniforme (a,b) $    &  \(\displaystyle \frac{1}{b-a} \) &   \(\displaystyle \left \{  \begin{array}{rcl}
+0 \;si\, x<0\\
+q \;si\, x=0\\
+1 \;si\, x>0\\
+\end{array}  \right.    & \(\displaystyle  \frac{a+b}{2} \)  &     \(\displaystyle \frac{(b-a)^2}{12} \)    \\ \hline
+
+$Exponencial(\lambda) $  &    \(\displaystyle \lambda e^{-\lambda x} \)   &    \(\displaystyle 1 - e^{-\lambda x} \)   &  \(\displaystyle  \frac{1}{\lambda} \)     &     \(\displaystyle \frac{1}{\lambda^2} \)   \\ \hline
+
+$Normal (\mu, \sigma^2)  $     &  \(\displaystyle \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2}\left ( \frac{x-\mu}{\sigma} \right )^2} \)     &   \(\displaystyle \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-\frac{t^2}{2}} dt \)    &   \(\displaystyle  \mu \)    &    \(\displaystyle \sigma^2 \)    \\ \hline
+
+$Gamma  (\alpha,\beta) $      &   \(\displaystyle \frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x} \)    &   \(\displaystyle \int_0^x f(u;\alpha, \beta) \)    & \(\displaystyle \frac{\alpha}{\beta} \)      &   \(\displaystyle  \frac{\alpha}{\beta^2}\)     \\ \hline
+
+$Beta   (\alpha,\beta) $      &   \(\displaystyle \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta -1} \)    &   \(\displaystyle I_x(\alpha, \beta) \)    &   \(\displaystyle \frac{\alpha}{\alpha+\beta} \)    &   \(\displaystyle  \frac{\alpha \beta}{(\alpha+\beta)^2 (\alpha+\beta +1)} \)        \\ \hline
+
+$Weibull  (\alpha,\beta) $    &    \(\displaystyle \frac{\alpha}{\beta}\left ( \frac{x}{\beta} \right )^{\alpha-1} e^{-\left ( \frac{x}{\beta} \right )^{\alpha} } \)   &    \(\displaystyle 1-e^{-\left ( \frac{x}{\beta} \right )^{\alpha} } \)   &    \(\displaystyle \beta \Gamma\left (1+ \frac{1}{\alpha} \right ) \)   &  \(\displaystyle \beta^2\left [ \Gamma\left (1+ \frac{2}{\alpha} \right ) -\Gamma^2\left (1+ \frac{1}{\alpha} \right ) \right ]  \)       \\ \hline
+
+\end{tabular}}
+\end{center}
+
+
+.
+\\
+.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Para 2 Muestras RELACIONADAS}
+\subsection*{Signos}
+
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=7cm, title= Unilateral]
+$$p = P(X \leq x) = \sum_{i=0}^{x} \binom{N}{i} (0.5)^N$$
+\end{tcolorbox}
+\end{center}
+
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=7.5cm, title= Bilateral]
+$$p = \sum_{i=0}^{x_1} \binom{N}{i} (0.5)^N + \sum_{i=x_2}^{N} \binom{N}{i} (0.5)^N$$
+\end{tcolorbox}
+\end{center}
+
+
+%\begin{center}
+%\begin{tcolorbox}[colback=white,colframe=black,width=10cm ,coltitle=white]
+%\begin{multicols}{2} 
+%\large{
+%\begin{center}
+%\large{
+%Media =\mu_{x} = \frac{N}{2}\\
+%Varianza =\sigma^2_{x}= \frac{N}{4}
+%}
+%\end{center}}
+%\end{multicols} 
+%\end{tcolorbox}
+%\end{center}
+
+
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=11 cm]
+\large{$Z = \frac{(x \pm 0.5) - \frac{N}{2}}{\frac{\sqrt{N}}{2}} $}
+donde
+\left\{\begin{matrix}
+$x + 0.5 \quad para & x < \frac{N}{2}$\\ 
+$x - 0.5 \quad para & x > \frac{N}{2}$
+\end{matrix}\right. 
+\end{tcolorbox}
+\end{center}
+
+
+
+\subsection*{McNemar}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=8 cm]
+\large{
+$$T_{1} = \frac{(\left | B-C \right | - 1)^2}{B+C} $$
+}
+\end{tcolorbox}
+\end{center}
+
+%\sim \X^2_{(1)g.l.
+
+
+
+\subsection*{Rangos Señalados y Pares Igualados de Wilcoxon}
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=14cm ,coltitle=white]
+\begin{multicols}{2} 
+\large{
+\begin{center}
+\large{
+$\mu_{x} = \frac{N(N+1)}{4}$\\
+$\sigma^2_{x}= \frac{N(N+1)(2N+1)}{24}$
+}
+\end{center}}
+\end{multicols} 
+\end{tcolorbox}
+\end{center}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Para 2 Muestras INDEPENDIENTES}
+\subsection*{La Mediana}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=12 cm]
+\large{
+$$\X^2 = \frac{n(\left | AD-BC \right | - \frac{n}{2})^2}{(A+B)(C+D)(A+C)(B+D)} $$
+}
+\end{tcolorbox}
+\end{center}
+%\sim \X^2_{(1)g.l.} = \X^2_{tabla,(1)g.l.}
+
+
+
+
+\subsection*{U de Mann-Whitney}
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=15cm ,coltitle=white]
+\begin{multicols}{2} 
+\large{
+\begin{center}
+\large{
+$U_{1} = n_1 n_2 +\frac{n_1(n_1+1)}{2} - \sum_{i=1}^{n_1} R_i$ \\
+$U_{2}=  n_1 n_2 +\frac{n_2(n_2+1)}{2} - \sum_{i=1}^{n_2} R_i$
+}
+\end{center}}
+\end{multicols} 
+\end{tcolorbox}
+\end{center}
+
+
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=14cm ,coltitle=white]
+\begin{multicols}{2} 
+\large{
+\begin{center}
+\large{
+$\mu_{U} = \frac{n_1 n_2}{2}$\\
+$\sigma^2_{U}= \frac{n_1 n_2(n_1 + n_2 + 1)}{12}$
+}
+\end{center}}
+\end{multicols} 
+\end{tcolorbox}
+\end{center}
+
+
+
+
+\subsection*{\mbox{\boldmath $X^2$}}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=8.5cm ,coltitle=white]
+$$
+X^2_{c} = \sum^{r}_{i=1} \sum^{2}_{j=1} \frac{(O_{ij} - e_{ij})^2}{e_{ij}}$$
+\end{tcolorbox}
+\end{center}
+ %\sim \X^2_{\alpha,(r-1)\times (1)g.l.} 
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=8cm ,coltitle=white]
+$$
+X^2_{c} =\frac{n(\left | AD-BC \right | - \frac{n}{2})^2}{n_{\cdot 1}n_{\cdot 2}n_{1 \cdot}n_{2 \cdot}}$$
+\end{tcolorbox}
+\end{center}
+
+% \sim \X^2_{\alpha,(1)g.l.} 
+
+
+\subsection*{La Probabilidad exacta de FISHER}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=8cm ,coltitle=white]
+$$
+P_{a'} =\frac{(a+b)!(c+d)!(a+c)!(b+d)!}{n!\; a'!\;b'!\;c'!\;d'!}
+$$
+\end{tcolorbox}
+\end{center}
+
+
+\subsection*{Kolmogorov-Smirnov}
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=6 cm]
+\large{
+$$\X^2_c = 4D^2_c\frac{n_1 n_2}{n_1 + n_2} $$}
+\end{tcolorbox}
+\end{center}
+%\sim \X^2_{(2 g.l.)} 
+
+
+
+%Esto es para empezar el texto en la siguiente pagina
+\newpage
+%Si quieres agregar una pagina en blanco seria con estos comandos
+%\afterpage{\null\newpage}
+%\newpage
+
+\section*{Para K Muestras RELACIONADAS}
+\subsection*{Friedman}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=8cm ,coltitle=white]
+$$
+X^2_{c} =\frac{12}{nk(k+1)} \sum^{k}_{j=1} R^2_j - 3n(k+1)$$
+\end{tcolorbox}
+\end{center}
+
+\subsection*{Q de Cochran}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=10cm ,coltitle=white, valign = top] 
+\begin{equation*}Q_{c} =\frac{ (k-1)\left[k\sum\limits^{k}_{j=1} G^2_j - \left(\sum\limits^{k}_{j=1} G_j \right)^2\right] }{k \sum\limits^{n}_{i=1} L_i - \sum\limits^{n}_{i=1} L_i^2} 
+\end{equation*}
+\end{tcolorbox}
+\end{center}
+
+
+\section*{Para K Muestras INDEPENDIENTES}
+\subsection*{$X^2$}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=8.5cm ,coltitle=white]
+$$
+X^2_{c} = \sum^{r}_{i=1} \sum^{2}_{j=1} \frac{(O_{ij} - e_{ij})^2}{e_{ij}}$$
+\end{tcolorbox}
+\end{center}
+
+\subsection*{Kruskall-Wallis}
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=8.5cm ,coltitle=white]
+$$
+H =\frac{12}{N(N+1)} \sum^{k}_{j=1} \frac{R^2_j}{n_j} - 3n(k+1)$$
+\end{tcolorbox}
+\end{center}
+
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=black,width=8.5cm ,coltitle=white]
+$$T_i = t_i^3 - t_i$$
+$$H_{corregido} =\frac{H}{\left[ 1- \frac{\sum\limits^{t}_{i=1} T_i}{N^3-N}\right]}$$
+\end{tcolorbox}
+\end{center}
+
+
+
+
+%Para poner una ecuacion en la tabla
+%\(\displaystyle \sum_{n=1}^2 C_n \)
+
+
+
+%PAra colocar muchas ecauciones en una celda de la tabla
+%\multicolumn{1}{|p{3cm}|}{
+%         \begin{gather*}
+%           y = x^2 \\
+%            z = \log(y)\\
+%           w = 3z + 2x
+%         \end{gather*}
+%       }
+
+
+\end{document}
